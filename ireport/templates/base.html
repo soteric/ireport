@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- {% load bootstrap_toolkit %} -->
+{% load staticfiles %}
+{% load url from future %}
+{#{% bootstrap_stylesheet_tag %}#}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    -->
+    <script type="text/javascript" src="{% static "js/shortcut.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+    <link href='{% static "css/font.css" %}' rel='stylesheet' type='text/css'>
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+{#    {% bootstrap_javascript_tag %}#}
+<html lang="en">
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="logo" class="brand" href="#">iReport</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    {% block active %}
+                    
+                    <li>
+        <a href="defects">V1 REM Defect</a>
+    </li>
+    <li>
+        <a href="backlogs">V1 BI</a>
+    </li>
+                    
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="body">
+    <div class="container">
+
+        {% block content%}
+            <div style="min-height: 400px; text-align: center">
+                <div style="margin-top: 200px; color: darkslateblue">
+                    <p>Welcome to iReport !!!</p>
+
+                </div>
+            </div>
+        {% endblock %}
+
+        <hr>
+        <footer>
+            <div id="" class="span12">
+                <img class="logo" src="{% static "img/dolly.png" %}" style="max-height: 80px;"/>
+                <strong>iReport @ SuccessFactors 2013</strong>
+            </div>
+        </footer>
+
+    </div>
+
+</div>
+
+</body>
+
+<head>
+    <meta charset="utf-8">
+    <title>iReport</title>
+    <meta name="description" content="">
+    <meta name="author" content="Eric Wang">
+
+    {% block extra_head %}
+
+    {% endblock %}
+
+</head>
+</html>

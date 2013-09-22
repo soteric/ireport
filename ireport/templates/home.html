@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block active %}
+    <li class="active">
+        <a href="home">Home</a>
+    </li>
+    <li>
+        <a href="defects">Defects</a>
+    </li>
+    <li>
+        <a href="checkins">Checkins</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    {% for environment in environments %}
+        <div class="span4">
+            <div class="row">
+                <h3>{{ environment }}</h3>
+            </div>
+            <div class="row">
+                <div id="thumbnail" class="span3 thumbnail">
+                    <img class="cloud-bg" src="{% static "img/cloud_bg.png"%}"/>
+                </div>
+                <div id="" class="panel span1">
+                    {% for page in pages %}
+                        {% ifequal environment|lower 'qacand' %}
+                            {{ page }}
+                            <a class="panel-btn btn btn-primary" style="font-family: sans-serif; font-weight: bold; font-size:10px; width:80px" onclick="window.open('https://{{ environment }}.successfactors.com/') ">{{ page }}</a>
+                            {% else %}
+                            <a class="panel-btn btn btn-primary" style="font-family: sans-serif; font-weight: bold; font-size:10px; width:80px" onclick="window.open('http://www.baidu.com') ">{{ page }}</a>
+                        {% endifequal %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                {% ifequal environment|lower 'qacand' %}
+                    <a class="btn v_details" href="https://{{ environment }}.successfactors.com/login?company=ewang&username=ewang&password=pwd">View details</a>
+                {% else %}
+                    <a class="btn v_details" href="http://{{ environment }}.successfactors.com/login?company=ewang&username=ewang&password=pwd">View details</a>
+                {% endifequal %}
+
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

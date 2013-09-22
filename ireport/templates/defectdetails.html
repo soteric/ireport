@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="{% static "js/jquery.dataTables.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/populateDataTable.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dataTables_themeroller.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui-1.8.4.custom.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/backlogdetails.css" %}" />
+{% endblock %}
+
+{% block active %}
+    <li class="active">
+        <a href="defects">V1 REM Defect</a>
+    </li>
+    <li>
+        <a href="backlogs">V1 BI</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div id='loading'></div>
+    <div style='margin-top:30px; margin-bottom:20px;'>
+    <table id='datatable' class='display dataTable paginate_enabled_previous paginate_enabled_next' width='100%' style='width: 100%'>
+        <thead>
+            <tr>
+                <th style="width: 80px">ID</th>
+                <th>Title</th>
+                <th>SLA</th>
+                <th>Type</th>
+                <th>Config Type</th>
+                <th width="100px">Status</th>
+                <th width="30px">Module</th>
+                <th style='min-width: 100px; max-width: 120px'>Sprint</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for item in items %}
+            <tr>
+                <td><a href="https://versionone.successfactors.com/vone/assetdetail.v1?oid={{ item.oid }}">{{ item.id }}</a></td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.sla }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.configType }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.module }}</td>
+                <td>{{ item.sprint }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+{% endblock %}

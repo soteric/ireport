@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+    <script type="text/javascript" src="{% static "js/highcharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/modules/exporting.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/populatedefects.js" %}"></script>
+{% endblock %}
+
+{% block active %}
+    <li class="active">
+        <a href="defects">V1 REM Defect</a>
+    </li>
+    <li>
+        <a href="backlogs">V1 BI</a>
+    </li>
+    
+{% endblock %}
+
+{% block content %}
+    <div id="ichart" style="min-width: 400px; max-width: 1200px; max-height: 780px; min-height: 500px; margin-left: auto; margin-right: auto; margin-top: 50px; margin-bottom: 30px;"></div>
+{% endblock %}

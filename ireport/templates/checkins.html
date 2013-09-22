@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li>
+        <a href="home">Home</a>
+    </li>
+    <li>
+        <a href="defects">Defects</a>
+    </li>
+    <li class="active">
+        <a href="checkins">Checkins</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#1" data-toggle="tab">Trunk</a>
+            </li>
+            <li><a href="#2" data-toggle="tab">Patch</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <div style="font-size:28px;font-weight:bold;text-align:center">
+                    <p>PMR Team latest changes on trunk</p>
+                </div>
+
+
+                <!-- Table of checkins -->
+                <div class='table'>
+                    <table>
+                        <tr>
+                            <th>Revision Number</th>
+                            <th>By Developer</th>
+                            <th>Checkin Date</th>
+                            <th>SVN Changes</th>
+                        </tr>
+                        {% for item in items %}
+                        <tr>
+                            <td>item.rev_num</td>
+                            <td>item.dev</td>
+                            <td>item.check_in_date</td>
+                            <td><a href="http://svn.successfactors.com/viewvc/svn?view=revision&amp;revision=r323703">r323703</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane" id="2">
+                <div style="font-size:28px;font-weight:bold;text-align:center">
+                    <p>PMR Team latest changes on Patch</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

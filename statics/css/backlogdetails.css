@@ -1,0 +1,26 @@
+select {
+    width: 60px;
+}
+table.dataTable a:link {
+    color: #0088cc; text-decoration: none; outline: none;
+    font-family: Segoe UI, Arial, sans-serif; font-size: 1em;
+
+}
+
+table.dataTable a:hover {
+    color: #ffffff; text-decoration: none; outline: none;
+}
+
+select, input[type="text"] {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+select:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0;
+    outline: thin dotted \9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}

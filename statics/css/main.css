@@ -1,0 +1,112 @@
+body {
+	padding-bottom: 0;
+}
+
+#logo {
+    font-family: 'Lobster', cursive;
+    font-size: 3.0em;
+    height: 28px;
+    padding-top: 10px;
+}
+
+ul>li>a{
+    font-family: 'Lobster', cursive;
+	font-size: 1.6em;
+}
+ul>li {
+    padding: 5px 5px 5px 0px;
+}
+
+.search {
+	background: url("../img/icon-search.png") no-repeat scroll 7px 50% white;
+}
+
+#jiraid, #svnid {
+	padding-left: 30px;
+}
+
+#logo {
+	color: #f9e037;
+}
+.span4{
+    margin-left: 2.0em;
+    margin-right: 4.4em;
+    width:300px;
+}
+.span3{
+	width: 210px;
+}
+.cloud-bg {
+	height: 130px;
+}
+
+.popular-panel {
+	height: 138px;
+    width: 57px;
+	border-width: 5px;
+	border-color: white;
+	box-shadow: 2px 2px 5px #444;
+	border-radius: 0;
+	font-size: 18px;
+}
+
+.thumbnail {
+	background-color: #0095D9;
+	border-width: 5px;
+	border-color: white;
+	margin-left: 0;
+	box-shadow: 2px 2px 5px #444;
+	border-radius: 0 0 0 0;
+}
+
+.popular-panel a{
+	font-size: 0.7em;
+}
+
+.thumbnail:hover {
+	background-color: #2cc7e1;
+}
+
+
+.v_details {
+	margin-top: 10px;
+}
+
+.body{
+	background: #fff;
+	margin-top: -20px;
+}
+
+.popular-panel ul{
+	width: 60px;
+	list-style: none;
+	margin-left:0;
+}
+
+.well {
+	margin-bottom: 0;
+    padding: 0;
+}
+
+.span1 {
+	margin-left: 5px;
+    min-width: 80px;
+}
+
+.panel-btn {
+	min-width: 45px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.panel {
+	line-height: 1.2em;
+    margin-left:15px
+}
+p {
+    line-height: 2.0em;
+    font-family: 'Lobster',cursive;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
