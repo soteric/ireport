@@ -93,7 +93,7 @@ def DefectDetails(request):
     status_mapping = {
         'Unresolved': ['None', 'No Requirements', 'Requirements Done', 'Planned', 'In Progress', 'Awaiting Clarification', 'Awaiting Code Fix', 'Blocked', 'Reopened'],
         'In Testing': ['Dev Complete', 'In Testing'],
-        'Completed': ['Done']
+        'Closed': ['Done']
     }
     p1p2 = ['P1', 'P2']
     cfg_type = ['Universal (Universal features require 30 days pre-notice.)', 'Admin Opt-out', 'Provisioning Opt-out']
@@ -166,6 +166,8 @@ def DefectDetails(request):
                     or type == 'Regression' \
                     or (sla == 'P3' and type == 'New' and configType in cfg_type):
                 custom_status = parameters['status']
+                if configType == cfg_type[0]:
+                    configType = configType.split(" ")[0]
                 v1_tmp = V1Defect(v1_id=v1_id, oid=oid, title=title, custom_status=custom_status, module=module, sprint=sprint, status=status, sla=sla, type=type, configType=configType)
                 defect_list.append(v1_tmp)
 
