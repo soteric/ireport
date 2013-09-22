@@ -92,16 +92,16 @@ $(document).ready(function () {
               }
 
               // varp
-              if(key==='varp_not_started'){
+              if(key==='vrp_not_started'){
                   not_started[5] = val;
               }
-              if(key==='varp_in_progress'){
+              if(key==='vrp_in_progress'){
                   in_progress[5] = val;
               }
-              if(key==='varp_in_testing'){
+              if(key==='vrp_in_testing'){
                   in_testing[5] = val;
               }
-              if(key==='varp_completed'){
+              if(key==='vrp_completed'){
                   completed[5] = val;
               }
 
@@ -155,7 +155,7 @@ $(document).ready(function () {
                 marginBottom: 70,
                 borderWidth: 1,
                 borderRadius: 0,
-                backgroundColor: '#E7FFE6'
+                backgroundColor: '#FDFFFF'
             },
             credits: {
                 enabled: false

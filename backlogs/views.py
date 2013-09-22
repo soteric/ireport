@@ -18,7 +18,7 @@ def Backlogs(request):
 def GetBacklogNumber(request):
     t1 = datetime.now()
 
-    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'varp': '611415', 'cal': '805607',
+    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_not_started', '_in_progress', '_in_testing', '_completed']
     fields = ['SecurityScope.Name', 'SecurityScope', 'Status.Name', 'Timebox.Name']
@@ -86,7 +86,7 @@ def BacklogDetails(request):
     for para in request.GET.iteritems():
         parameters[para[0].encode('utf-8')] = para[1].encode('utf-8')
     print parameters
-    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'varp': '611415', 'cal': '805607',
+    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_not_started', '_in_progress', '_in_testing', '_completed']
     fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope']

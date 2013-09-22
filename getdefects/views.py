@@ -11,14 +11,14 @@ from django.shortcuts import render
 def GetDefectsNumber(request):
     t1 = datetime.now()
 
-    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'varp': '611415', 'cal': '805607',
+    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_unres', '_in_testing', '_res']
     fields = ['SecurityScope', 'Custom_SLA2.Name', 'Type.Name', 'Custom_ConfigurationType.Name', 'Status.Name']
     p1p2 = ['P1', 'P2']
     cfg_type = ['Universal (Universal features require 30 days pre-notice.)', 'Admin Opt-out', 'Provisioning Opt-out']
     in_testing = ['Dev Complete', 'In Testing']
-    attr_type = {'type': 0, 'config': 0, 'sla': 0, 'status': 0, 'project': 0, 'project.name': 0, }
+    attr_type = {'type': 0, 'config': 0, 'sla': 0, 'status': 0, 'project': 0, 'project.name': 0 }
 
     some_data = {}
     scope = ''
@@ -85,7 +85,7 @@ def DefectDetails(request):
     for para in request.GET.iteritems():
         parameters[para[0].encode('utf-8')] = para[1].encode('utf-8')
     print parameters
-    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'varp': '611415', 'cal': '805607',
+    modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status_list = ['_unres', '_in_testing', '_res']
     fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope', 'Custom_SLA2.Name', 'Type.Name', 'Custom_ConfigurationType.Name']

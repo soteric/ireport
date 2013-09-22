@@ -69,13 +69,13 @@ $(document).ready(function () {
               }
 
               // varp
-              if(key==='varp_unres'){
+              if(key==='vrp_unres'){
                   unres_data[5] = val;
               }
-              if(key==='varp_in_testing'){
+              if(key==='vrp_in_testing'){
                   in_testing_data[5] = val;
               }
-              if(key==='varp_res'){
+              if(key==='vrp_res'){
                   res_data[5] = val;
               }
 
