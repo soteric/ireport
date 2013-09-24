@@ -88,7 +88,7 @@ def DefectDetails(request):
     modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status_list = ['_unres', '_in_testing', '_res']
-    fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope', 'Custom_SLA2.Name', 'Type.Name', 'Custom_ConfigurationType.Name']
+    fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope', 'Custom_SLA2.Name', 'Type.Name', 'Custom_ConfigurationType.Name', 'Owners.Name']
     # attr_type = {'status': 0, 'project': 0, 'sprint': 0}
     status_mapping = {
         'Unresolved': ['None', 'No Requirements', 'Requirements Done', 'Planned', 'In Progress', 'Awaiting Clarification', 'Awaiting Code Fix', 'Blocked', 'Reopened'],
@@ -133,8 +133,13 @@ def DefectDetails(request):
         for node_attribute in node_asset:
             for attr in fields:
                 if node_attribute.attrib['name'] == attr:
-                    backlogItems[id][attr] = node_attribute.text
+                    node_value = node_attribute.find('Value')
+                    if node_value != None:
+                        backlogItems[id][attr] = node_value.text.split(" ")[0]
+                    else:
+                        backlogItems[id][attr] = node_attribute.text
         backlogItems[id]['oid'] = node_asset.attrib['id']
+
 
     for item in backlogItems.iteritems():
         for i in item[1].iteritems():
@@ -161,6 +166,8 @@ def DefectDetails(request):
                 type = str(i[1])
             elif i[0] == 'Custom_ConfigurationType.Name':
                 configType = str(i[1])
+            elif i[0] == 'Owners.Name':
+                owner = str(i[1])
         if status in status_mapping[parameters['status']]:
             if sla in p1p2 \
                     or type == 'Regression' \
@@ -168,7 +175,7 @@ def DefectDetails(request):
                 custom_status = parameters['status']
                 if configType == cfg_type[0]:
                     configType = configType.split(" ")[0]
-                v1_tmp = V1Defect(v1_id=v1_id, oid=oid, title=title, custom_status=custom_status, module=module, sprint=sprint, status=status, sla=sla, type=type, configType=configType)
+                v1_tmp = V1Defect(v1_id=v1_id, oid=oid, title=title, custom_status=custom_status, module=module, sprint=sprint, status=status, sla=sla, type=type, configType=configType, owner=owner)
                 defect_list.append(v1_tmp)
 
     return render(request, 'defectdetails.html', {'items': defect_list})

@@ -89,7 +89,7 @@ def BacklogDetails(request):
     modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_not_started', '_in_progress', '_in_testing', '_completed']
-    fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope']
+    fields = ['ID.Name', 'ID.Number', 'SecurityScope.Name', 'Status.Name', 'Timebox.Name', 'SecurityScope', 'Owners.Name']
     # attr_type = {'status': 0, 'project': 0, 'sprint': 0}
     status_mapping = {
         'Not Started': ['None', 'No Requirements', 'Requirements Done', 'Planned'],
@@ -138,7 +138,11 @@ def BacklogDetails(request):
         for node_attribute in node_asset:
             for attr in fields:
                 if node_attribute.attrib['name'] == attr:
-                    backlogItems[id][attr] = node_attribute.text
+                    node_value = node_attribute.find('Value')
+                    if node_value != None:
+                        backlogItems[id][attr] = node_value.text.split(" ")[0]
+                    else:
+                        backlogItems[id][attr] = node_attribute.text
         backlogItems[id]['oid'] = node_asset.attrib['id']
 
     for item in backlogItems.iteritems():
@@ -160,9 +164,11 @@ def BacklogDetails(request):
                 start = str(i[1]).find('(')+1
                 end = str(i[1]).find(')')
                 module = str(i[1])[start:end]
+            elif i[0] == 'Owners.Name':
+                owner = str(i[1])
         if status in status_mapping[parameters['status']]:
             custom_status = parameters['status']
-            v1_tmp = V1Story(v1_id=v1_id, oid=oid, title=title, custom_status=custom_status, module=module, sprint=sprint, status=status)
+            v1_tmp = V1Story(v1_id=v1_id, oid=oid, title=title, owner=owner, custom_status=custom_status, module=module, sprint=sprint, status=status)
             story_list.append(v1_tmp)
 
     return render(request, 'backlogdetails.html', {'items': story_list})
