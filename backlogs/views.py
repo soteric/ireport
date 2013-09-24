@@ -167,8 +167,9 @@ def BacklogDetails(request):
             elif i[0] == 'Owners.Name':
                 owner = str(i[1])
         if status in status_mapping[parameters['status']]:
-            custom_status = parameters['status']
-            v1_tmp = V1Story(v1_id=v1_id, oid=oid, title=title, owner=owner, custom_status=custom_status, module=module, sprint=sprint, status=status)
-            story_list.append(v1_tmp)
+            if sprint == 'Sprint2':
+                custom_status = parameters['status']
+                v1_tmp = V1Story(v1_id=v1_id, oid=oid, title=title, owner=owner, custom_status=custom_status, module=module, sprint=sprint, status=status)
+                story_list.append(v1_tmp)
 
     return render(request, 'backlogdetails.html', {'items': story_list})

@@ -21,5 +21,5 @@ urlpatterns = patterns('',
     (r'backlogs', 'backlogs.views.Backlogs'),
     (r'^getbacklognumber', 'backlogs.views.GetBacklogNumber'),
     (r'^defectdetails', 'getdefects.views.DefectDetails'),
-    ('', 'default.views.Default'),
+    ('', 'backlogs.views.Backlogs'),
 )
