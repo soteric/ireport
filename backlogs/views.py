@@ -17,7 +17,10 @@ def Backlogs(request):
 
 def GetBacklogNumber(request):
     t1 = datetime.now()
-
+    request_sprint = ''
+    request_sprint = request.GET.get('sprint')
+    if request_sprint == '':
+        request_sprint = 'Sprint 2'
     modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_not_started', '_in_progress', '_in_testing', '_completed']
@@ -50,6 +53,7 @@ def GetBacklogNumber(request):
 
     v1 = V1Meta()
     query = v1.url + "/rest-1.v1/Data/Story?Sel=" + sel + "&Where=" + scope
+    print query
     dom = v1.get_xml(query)
     doc = ET.fromstring(dom)
     root = doc
@@ -63,7 +67,7 @@ def GetBacklogNumber(request):
             attr_type['sprint'] = ne
     for ns in root:
         for module in modules.iteritems():
-            if ns[attr_type['sprint']].text == 'Sprint 2':
+            if ns[attr_type['sprint']].text == request_sprint:
                 if ns[attr_type['project']][0].attrib['idref'].split(':')[1] == module[1]:
                     module_key = module[0]
                     if ns[attr_type['status']].text in not_started:

@@ -13,8 +13,14 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function () {
+    populateChart('Sprint 2');
+});
+
+function populateChart (sp) {
+    var sprint = sp;
+    request_para = 'sprint='+sprint;
     $('#ichart').html("<img src='/static/images/loading.gif' style='padding-top: 200px;max-height: 80px; display: block; margin-left: auto; margin-right: auto;' >");
-    $.getJSON('/getbacklognumber', function(data) {
+    $.getJSON('/getbacklognumber?'+request_para, function(data) {
           var not_started = new Array();
           var in_progress = new Array();
           var in_testing = new Array();
@@ -261,4 +267,4 @@ $(document).ready(function () {
         });
 
     });
-});
+}
