@@ -21,6 +21,8 @@ def GetBacklogNumber(request):
     request_sprint = request.GET.get('sprint')
     if request_sprint == '':
         request_sprint = 'Sprint 2'
+
+
     modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
                'tgm': '567435', 'cmp': '551644', 'pe': '294215'}
     status = ['_not_started', '_in_progress', '_in_testing', '_completed']
@@ -171,7 +173,7 @@ def BacklogDetails(request):
             elif i[0] == 'Owners.Name':
                 owner = str(i[1])
         if status in status_mapping[parameters['status']]:
-            if sprint == 'Sprint2':
+            if sprint == parameters['sprint'].replace(' ', ''):
                 custom_status = parameters['status']
                 v1_tmp = V1Story(v1_id=v1_id, oid=oid, title=title, owner=owner, custom_status=custom_status, module=module, sprint=sprint, status=status)
                 story_list.append(v1_tmp)

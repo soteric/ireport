@@ -167,7 +167,7 @@ function populateChart (sp) {
                 enabled: false
             },
             title: {
-                text: '1311 Talent V1 Backlog Status (Sprint 2)',
+                text: '1311 Talent V1 Backlog Status (' +sprint + ')',
                 style: {
                     fontWeight: 'bold',
                     fontSize: '28px'
@@ -222,7 +222,7 @@ function populateChart (sp) {
                     point: {
                         events: {
                             click: function() {
-                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name);
+                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name + '&sprint=' + sprint);
                             }
                         }
                     }
@@ -234,7 +234,7 @@ function populateChart (sp) {
                     point: {
                         events: {
                             click: function() {
-                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name);
+                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name + '&sprint=' + sprint);
                             }
                         }
                     }
@@ -246,7 +246,7 @@ function populateChart (sp) {
                     point: {
                         events: {
                             click: function() {
-                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name);
+                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name + '&sprint=' + sprint);
                             }
                         }
                     }
@@ -258,7 +258,7 @@ function populateChart (sp) {
                     point: {
                         events: {
                             click: function() {
-                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name);
+                                window.open('/backlogdetails?module='+ this.category + '&status=' + this.series.name + '&sprint=' + sprint);
                             }
                         }
                     }
