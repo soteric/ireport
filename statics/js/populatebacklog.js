@@ -13,7 +13,7 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function () {
-    populateChart('Sprint 2');
+    populateChart('Feature Freeze');
 });
 
 function populateChart (sp) {
