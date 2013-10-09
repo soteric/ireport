@@ -20,7 +20,7 @@ def GetBacklogNumber(request):
     request_sprint = ''
     request_sprint = request.GET.get('sprint')
     if request_sprint == '':
-        request_sprint = 'Sprint 2'
+        request_sprint = 'Feature Freeze'
 
 
     modules = {'pmr': '454039', 'pmt': '567434', 'mtr': '567436', 'scm': '611410', 'vrp': '611415', 'cal': '805607',
