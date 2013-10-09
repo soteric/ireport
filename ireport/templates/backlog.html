@@ -18,9 +18,10 @@
 {% endblock %}
 
 {% block content %}
-    <div style="margin-top: 30px; margin-left:auto; margin-right:auto">
-    <button id="sprint" class='btn-primary btn-primary' onclick='javascript:populateChart("Sprint 1")'>Sprint 1</button>
-    <button id="sprint" class='btn-primary btn-primary' onclick='javascript:populateChart("Sprint 2")'>Sprint 2</button>
+    <div class="span12" style="margin: 30px auto">
+    <button class='btn-primary btn-primary' onclick='javascript:populateChart(this.value)' value='Sprint 1'>Sprint 1</button>
+    <button class='btn-primary btn-primary' onclick='javascript:populateChart(this.value)' value='Sprint 2'>Sprint 2</button>
+    <button class='btn-primary btn-primary' onclick='javascript:populateChart(this.value)' value='Feature Freeze'>Feature Freeze</button>
     </div>
     <div id="ichart" style="min-width: 400px; max-width: 1200px; max-height: 780px; min-height: 500px; margin-left: auto; margin-right: auto; margin-top: 50px; margin-bottom: 30px;"></div>
 {% endblock %}
